@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %} Question {{ num + 1 }} {% endblock %}
+{% block content %}
+<p><strong> {{ ask_quest }}</strong></p>
+<form action="/answers/{{ num }}" method="post">
+    {% for choice in options %}
+    <input type="radio" required name="answers/{{ num }}" id="{{ num }}" value="{{ options[loop.index - 1] }}">
+    <label for="{{ num }}"> {{ options[loop.index - 1] }}</label>
+    <p>{{ responses }}</p>
+    {% endfor %}
+    <br><br>
+    <button>Next</button>
+</form>
+{% endblock %}
