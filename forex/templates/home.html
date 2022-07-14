@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} Forex Converter {% endblock %}
+{% block content %}
+<h1>Convert currencies using our app</h1>
+<form action="/conversion" method="post">
+    <label for="bcurr">Converting from:</label>
+    <input type="text" placeholder="Base currency" name="bcurr" value="{{ bcurr }}">
+    <br>
+    <label for="tcurr">Converting to:</label>
+    <input type="text" placeholder="Target currency" name="tcurr" value="{{ tcurr }}">
+    <br>
+    <label for="amt">Amount:</label>
+    <input type="number" placeholder="Amount in base currency" name="amt" value="{{ amt }}">
+    <br><br>
+    <button><b>Convert</b></button>
+</form>
+{% endblock %}
