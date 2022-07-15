@@ -16,7 +16,7 @@ class ConversionTestCase(TestCase):
     def test_convert_form(self):
         with app.test_client() as client:
             res = client.post('/conversion', 
-                            query_string = {'bcurr': 'USD',
+                                    data = {'bcurr': 'USD',
                                             'tcurr': 'USD',
                                             'amt': '100.0'})
             
@@ -25,8 +25,8 @@ class ConversionTestCase(TestCase):
     def test_errs_in_form(self):
         with app.test_client() as client:
             res = client.post('/conversion', 
-                            query_string = {'bcurr': 'asdf',
+                                       data = {'bcurr': 'asdf',
                                             'tcurr': 'UasfdD',
                                             'amt': '-55'})
 
-            self.assertIn(b'Not a valid code: MUPPET', res.data)
+            self.assertIn(b'Not a valid base currency: asdf', res.data)
