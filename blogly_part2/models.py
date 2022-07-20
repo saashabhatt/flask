@@ -34,7 +34,7 @@ class User(db.Model):
         return f"{self.first_name} {self.last_name}"
 
 class Post(db.Model):
-    __tablemame__ = "posts"
+    __tablename__ = "posts"
 
     def __repr__(self):
         p = self
