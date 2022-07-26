@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form>
+    <button class="btn btn-success" formaction="/users/{{ username }}/feedback/add">Add More Feedback
+    </button>
+    <button class="btn btn-danger" formmethod="post" formaction="/users/{{ username }}/delete">Delete User</button>
+    <button formaction="/logout">Logout</button>
+</form>
+{% for feedback in all_feedbacks %}
+    <div>
+        <p class="lead">{{ feedback.title }}</p>
+        <p>{{ feedback.content }}</p>
+        <form method="post">
+            <button class="btn btn-success" formaction="/feedback/{{ feedback.id }}/update">Edit</button>
+            <button class="btn btn-danger" formaction="/feedback/{{ feedback.id }}/delete">Delete</button>
+        </form>
+    </div>
+{% endfor %}
+
+{% endblock %}
+
